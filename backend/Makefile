@@ -1,2 +1,2 @@
 build:
-	docker build -t exo-api:latest .
+	docker build -t exo-api:1.0 .

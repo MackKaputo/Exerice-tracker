@@ -1,2 +1,2 @@
 build:
-	docker build -t exo-client:latest .
+	docker build -t exo-client:1.0 .
