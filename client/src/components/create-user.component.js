@@ -1,6 +1,11 @@
 import React, { Component } from "react"
 import axios from "axios"
 
+//local 
+//var URL = "http://127.0.0.1"
+//minikube
+var URL = "http://192.168.39.9"
+
 class CreateUser extends Component {
     constructor(props) {
         super(props)
@@ -25,7 +30,7 @@ class CreateUser extends Component {
         console.log(user)
 
         //send user to the backend
-        axios.post('http://localhost:5000/users/add', user)
+        axios.post(`${URL}:1414/users/add`, user)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
 

@@ -2,6 +2,11 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 
+//local 
+//var URL = "http://127.0.0.1"
+//minikube
+var URL = "http://192.168.39.9"
+
 const Exercise = props => {
     return(
     <tr>
@@ -28,7 +33,7 @@ class ExercisesList extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:5000/exercises/")
+        axios.get(`${URL}:1414/exercises/`)
             .then(response => {
                 this.setState({
                     exercises: response.data
@@ -41,7 +46,7 @@ class ExercisesList extends Component {
     }
 
     deleteExercise(id) {
-        axios.delete("http://localhost:5000/exercises/"+id)
+        axios.delete(`${URL}:1414/exercises/`+id)
             .then(res => console.log(res.data))
         
         this.setState({

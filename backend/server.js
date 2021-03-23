@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 //--------------------------
-//http = require("http")
+http = require("http")
 //--------------------------
 
 require('dotenv').config()
@@ -11,7 +11,7 @@ const app = express()
 const port = process.env.PORT
 
 //-----------------------------
-//onst server = http.createServer(app)
+const server = http.createServer(app)
 //-----------------------------
 
 app.use(cors())   //allows access from different hosts such as the frontend port which is different from the one the app is listening to
@@ -39,7 +39,7 @@ const usersRouter = require('./routes/users')
 app.use('/exercises', exercisesRouter)
 app.use('/users', usersRouter)
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
 })
 

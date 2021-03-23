@@ -13,7 +13,10 @@ router.route('/add').post((req, res) => {
     const newUser = new User({username})
 
     newUser.save()
-        .then(() => res.json('The User has been added!'))
+        .then(() => {
+            console.log(`A user ${username} has been saved`)
+            res.json('The User has been added!')
+        })
         .catch(err => res.status(400).json('Error: ' + err))
 })
 

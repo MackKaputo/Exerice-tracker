@@ -3,6 +3,12 @@ import axios from "axios"
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
+//local 
+//var URL = "http://127.0.0.1"
+//minikube
+var URL = "http://192.168.39.9"
+
+
 class CreateExercise extends Component {
     constructor(props) {
         super(props)
@@ -29,7 +35,7 @@ class CreateExercise extends Component {
         //    username: 'test user'
         //})
         // Actual action:
-        axios.get("http://localhost:5000/users/")
+        axios.get(`${URL}:1414/users/`)
             .then(response => {
                 //check if the returned response is not empty
                 if (response.data.length > 0) {
@@ -80,7 +86,7 @@ class CreateExercise extends Component {
         console.log(exercise)
 
         //Send exercise data to server
-        axios.post('http://localhost:5000/exercises/add', exercise)
+        axios.post(`${URL}:1414/exercises/add`, exercise)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
 

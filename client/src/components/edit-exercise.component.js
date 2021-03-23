@@ -3,6 +3,11 @@ import axios from "axios"
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
+//local 
+//var URL = "http://127.0.0.1"
+//minikube
+var URL = "http://192.168.39.9"
+
 class EditExercise extends Component {
     constructor(props) {
         super(props)
@@ -23,7 +28,7 @@ class EditExercise extends Component {
     }
     //Is called right before anything load on the page (testing users hard coding:)
     componentDidMount() {
-        axios.get("http://localhost:5000/exercises/"+this.props.match.params.id)
+        axios.get(`${URL}:1414/exercises/`+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     username: response.data.username,
@@ -36,7 +41,7 @@ class EditExercise extends Component {
                 console.log(error)
             })
 
-        axios.get("http://localhost:5000/users/")
+        axios.get(`${URL}:1414/users/`)
             .then(response => {
                 //check if the returned response is not empty
                 if (response.data.length > 0) {
@@ -89,7 +94,7 @@ class EditExercise extends Component {
         console.log(exercise)
 
         //Send exercise data to server
-        axios.post('http://localhost:5000/exercises/update/'+this.props.match.params.id, exercise)
+        axios.post(`${URL}:1414/exercises/update/`+this.props.match.params.id, exercise)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
 
