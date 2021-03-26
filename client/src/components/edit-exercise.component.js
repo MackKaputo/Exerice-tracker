@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css"
 //local 
 //var URL = "http://127.0.0.1"
 //minikube
-var URL = "http://192.168.39.9"
+var URL = "http://192.168.39.9:30014"
 
 class EditExercise extends Component {
     constructor(props) {

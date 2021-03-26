@@ -4,7 +4,7 @@ import axios from "axios"
 //local 
 //var URL = "http://127.0.0.1"
 //minikube
-var URL = "http://192.168.39.9"
+var URL = "http://192.168.39.9:30014"
 
 class CreateUser extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ class CreateUser extends Component {
         console.log(user)
 
         //send user to the backend
-        axios.post(`${URL}:1414/users/add`, user)
+        axios.post(`${URL}/users/add`, user)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
 

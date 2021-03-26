@@ -5,7 +5,8 @@ import axios from "axios"
 //local 
 //var URL = "http://127.0.0.1"
 //minikube
-var URL = "http://192.168.39.9"
+//minikube
+var URL = "http://192.168.39.9:30014"
 
 const Exercise = props => {
     return(
@@ -33,7 +34,7 @@ class ExercisesList extends Component {
     }
 
     componentDidMount() {
-        axios.get(`${URL}:1414/exercises/`)
+        axios.get(`${URL}/exercises/`)
             .then(response => {
                 this.setState({
                     exercises: response.data
@@ -46,7 +47,7 @@ class ExercisesList extends Component {
     }
 
     deleteExercise(id) {
-        axios.delete(`${URL}:1414/exercises/`+id)
+        axios.delete(`${URL}/exercises/`+id)
             .then(res => console.log(res.data))
         
         this.setState({
