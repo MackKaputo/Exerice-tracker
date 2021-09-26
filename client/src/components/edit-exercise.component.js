@@ -4,9 +4,10 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
 //local 
-//var URL = "http://127.0.0.1"
+//var URL = "http://127.0.0.1:1414"
+var URL = process.env.REACT_APP_API
 //minikube
-var URL = "http://192.168.39.9:30014"
+//var URL = "http://192.168.39.9:30014"
 
 class EditExercise extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class EditExercise extends Component {
     }
     //Is called right before anything load on the page (testing users hard coding:)
     componentDidMount() {
-        axios.get(`${URL}:1414/exercises/`+this.props.match.params.id)
+        axios.get(`${URL}/exercises/`+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     username: response.data.username,
@@ -41,7 +42,7 @@ class EditExercise extends Component {
                 console.log(error)
             })
 
-        axios.get(`${URL}:1414/users/`)
+        axios.get(`${URL}/users/`)
             .then(response => {
                 //check if the returned response is not empty
                 if (response.data.length > 0) {
@@ -94,7 +95,7 @@ class EditExercise extends Component {
         console.log(exercise)
 
         //Send exercise data to server
-        axios.post(`${URL}:1414/exercises/update/`+this.props.match.params.id, exercise)
+        axios.post(`${URL}/exercises/update/`+this.props.match.params.id, exercise)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
 

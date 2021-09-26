@@ -2,9 +2,10 @@ import React, { Component } from "react"
 import axios from "axios"
 
 //local 
-//var URL = "http://127.0.0.1"
+//var URL = "http://127.0.0.1:1414"
+var URL = process.env.REACT_APP_API
 //minikube
-var URL = "http://192.168.39.9:30014"
+//var URL = "http://192.168.39.9:30014"
 
 class CreateUser extends Component {
     constructor(props) {
@@ -31,7 +32,12 @@ class CreateUser extends Component {
 
         //send user to the backend
         axios.post(`${URL}/users/add`, user)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data)
+                if(!res.error) {
+                    alert("User successfully created")
+                }
+            })
             .catch((err) => console.log(err))
 
         //Then make the form blank to allow further registration

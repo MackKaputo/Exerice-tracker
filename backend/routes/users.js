@@ -11,7 +11,7 @@ router.route('/add').post((req, res) => {
     const username = req.body.username
 
     const newUser = new User({username})
-
+    console.log("Adding a user")
     newUser.save()
         .then(() => {
             console.log(`A user ${username} has been saved`)

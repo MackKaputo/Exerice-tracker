@@ -3,10 +3,11 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 
 //local 
-//var URL = "http://127.0.0.1"
+//var URL = "http://127.0.0.1:1414"
+var URL = process.env.REACT_APP_API
 //minikube
 //minikube
-var URL = "http://192.168.39.9:30014"
+//var URL = "http://192.168.39.9:30014"
 
 const Exercise = props => {
     return(
@@ -21,7 +22,7 @@ const Exercise = props => {
         </td>
     </tr>)
 }
-
+//console.log(`${REACT_APP_API}`)
 class ExercisesList extends Component {
     constructor(props) {
         super(props)
@@ -30,14 +31,18 @@ class ExercisesList extends Component {
         
         this.state = {
             exercises: [],
+            loadExerciseList: true
         }
     }
 
     componentDidMount() {
+
         axios.get(`${URL}/exercises/`)
             .then(response => {
+                console.log(response)
                 this.setState({
-                    exercises: response.data
+                    exercises: response.data,
+                    loadExerciseList: false
                 })
 
             })
@@ -60,11 +65,12 @@ class ExercisesList extends Component {
             return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id} />
         })
     }
-
+    
     render() {
+        const loadingStyle = {margin: "5%", display: "grid", placeItems: "center"}
         return (
             <div>
-                <h3>Logged Exercises</h3>
+                <h3 style={{ textAlign: "center", padding: "1em"}}>Logged Workouts</h3>
                 <table className="table">
                     <thead className="thead-light">
                         <tr>
@@ -77,11 +83,12 @@ class ExercisesList extends Component {
 
                     </thead>
                     <tbody>
-                        { this.exerciseList() }
+                        { this.state.loadExerciseList? 
+                        <h4 style={loadingStyle}> Loading ...</h4> : this.exerciseList() }
                     </tbody>
                 </table>
 
-                <div className="modal fade" id="myModal">
+                { /*<div className="modal fade" id="myModal">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -97,7 +104,7 @@ class ExercisesList extends Component {
                     </div>
                 </div>
 
-                <a href="#" data-toggle="modal" data-target="#myModal">Open this</a>
+        <a href="#" data-toggle="modal" data-target="#myModal">Open this</a> */}
             </div>
         )
     }

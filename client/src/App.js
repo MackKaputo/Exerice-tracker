@@ -7,10 +7,7 @@ import ExercisesList from "./components/exercises-list.component"
 import EditExercise from "./components/edit-exercise.component"
 import CreateExercise from "./components/create-exercise.component"
 import CreateUser from "./components/create-user.component"
-import LoginButton from "./components/LoginButton"
-import LogoutButton from "./components/LogoutButton"
-import Profile from "./components/Profile"
-import { useAuth0 } from "@auth0/auth0-react"
+
 
 function App() {
 
@@ -18,8 +15,6 @@ function App() {
    <Router>
      <div className="container">
       <Navbar />
-    
-      
       <br/>
       <Route path="/" exact component={ExercisesList} />
       <Route path="/edit/:id" component={EditExercise} />

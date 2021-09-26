@@ -4,9 +4,10 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
 //local 
-//var URL = "http://127.0.0.1"
+//var URL = "http://127.0.0.1:1414"
+var URL = process.env.REACT_APP_API
 //minikube
-var URL = "http://192.168.39.9:30014"
+//var URL = "http://192.168.39.9:30014"
 
 
 
