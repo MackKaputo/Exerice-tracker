@@ -1,3 +1,3 @@
 # Exerice-tracker
 
-A simple REACT application used to track worro=out exercises
+A simple REACT-NodeJS application used to track workout exercises
